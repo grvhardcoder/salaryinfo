@@ -1,4 +1,4 @@
-# Django settings for salary project.
+# Django settings for salaryinfo project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,14 +11,18 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'postgres',                      # Or path to database file if using sqlite3.
-        'USER': 'postgres',                      # Not used with sqlite3.
-        'PASSWORD': 'pilu',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en//ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -34,9 +38,6 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-
-AUTH_PROFILE_MODULE = 'salarylive.UserProfile'
-
 USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
@@ -81,14 +82,13 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'awe12s1@vc))@v=i4@dtvqrftf*o)7zm%l$b0o8kix=eqf6twg'
+SECRET_KEY = 'z7a&amp;ib4lqi)_ob10_vb9rjvddqxuz189nc#o&amp;16wf()-gwu*r)'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
-    #'salary/salarylive/templates/'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,16 +101,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'salary.urls'
-# Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'salary.wsgi.application'
+ROOT_URLCONF = 'salaryinfo.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    "E:\Software Installations\Aptana Workspace\salary\templates"
-)
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'salaryinfo.wsgi.application'
+
+import os
+TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -123,7 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'salarylive',
+    'salary',
 )
 
 # A sample logging configuration. The only tangible logging
