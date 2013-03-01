@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('accounts.urls')),
+    url(r'^$', 'django.views.generic.simple.direct_to_template',
+        {'template': 'base.html'}, name="about"),
 )

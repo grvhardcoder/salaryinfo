@@ -1,4 +1,6 @@
 # Django settings for salaryinfo project.
+#python -m smtpd -n -c DebuggingServer localhost:1025
+import os, warnings
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,15 +13,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'salary',                      # Or path to database file if using sqlite3.
+        'USER': 'postgres',                      # Not used with sqlite3.
+        'PASSWORD': 'qq11**',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
+AUTH_PROFILE_MODULE = "accounts.Profile"
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en//ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
@@ -120,8 +123,22 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'registration',
     'salary',
 )
+
+ACCOUNT_ACTIVATION_DAYS = 2
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'info@google.ru'
+
+try:
+    from salaryinfo.local_settings import *
+except Exception, e:
+    warnings.warn("Unable import local settings [%s]: %s" % (type(e), e))
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
