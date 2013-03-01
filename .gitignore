@@ -1,4 +1,9 @@
 *.log
 *.pot
 *.pyc
-local_settings.py
+*.dbf
+salaryinfo/local_settings.py
+salaryinfo/whoosh_index/*
+.idea/*
+.idea/workspace.xml
+.idea/tasks.xml
